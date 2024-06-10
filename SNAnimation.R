@@ -1,14 +1,9 @@
 # Load necessary packages
-packages <- c("data.table", "tidyverse", "keyring", "blastula", "dtplyr", 
-              "naniar", "network", "sna", "Matrix", "haven", "xtable", 
-              "ndtv", "networkDynamic")
-needed_packages <- setdiff(packages, rownames(installed.packages()))
-lapply(needed_packages, function(pkg) {
-  if (!require(pkg, character.only = TRUE)) {
-    install.packages(pkg)
-  }
-  library(pkg, character.only = TRUE)
-})
+packages <- c("data.table", "tidyverse", "keyring", "blastula",
+              "dtplyr", "naniar", "network", "sna", "Matrix", 
+              "haven", "xtable" , "ndtv" , "networkDynamic")
+if (length(setdiff(packages, rownames(installed.packages))) > 0) {
+  lapply(packages, library, character.only = TRUE)}
 
 # Upload data from specified paths
 e0 <- read.csv("Path to relationship data")
